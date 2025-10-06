@@ -13,7 +13,7 @@ st.caption("detects Telugu, Hindi, or English")
 # ---------- Load Whisper Model ----------
 @st.cache_resource
 def load_model():
-    return whisper.load_model("small")
+    return whisper.load_model("tiny")
 
 model = load_model()
 use_fp16 = torch.cuda.is_available()
@@ -73,3 +73,4 @@ if uploaded_file is not None:
     os.remove(temp_file_path)
     if audio_path != temp_file_path:
         os.remove(audio_path)
+
