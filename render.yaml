@@ -2,16 +2,11 @@ services:
   - type: web
     name: speech-to-text
     env: python
-    buildCommand: |
-      pip install --upgrade pip
-      pip install -r requirements.txt
-      # Install PyTorch with CPU-only support to reduce size
-      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-    startCommand: streamlit run app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false
-    envVars:
-      - key: PYTHONUNBUFFERED
-        value: true
-      - key: STREAMLIT_SERVER_PORT
-        value: $PORT
+    branch: main
     plan: free
-    autoDeploy: true
+    buildCommand: |
+      python -m pip install --upgrade pip
+      python -m pip install -r requirements.txt
+      # CPU-only PyTorch (optional, speeds up build)
+      python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+    startCommand: python -m streamlit run app.py --server.port $PORT --server.address 0.0.0.0
