@@ -2,7 +2,6 @@ services:
   - type: web
     name: speech-to-text
     env: python
-    pythonVersion: 3.10.13
     branch: main
     plan: free
     buildCommand: |
