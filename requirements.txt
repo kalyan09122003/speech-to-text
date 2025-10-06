@@ -1,4 +1,6 @@
 streamlit==1.50.0
-torch==2.5.1
-whisper
-moviepy
+whisper==1.1.10
+torch==2.8.0
+moviepy==1.0.3
+numpy
+tqdm
